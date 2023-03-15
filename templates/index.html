@@ -29,12 +29,12 @@
         </div>
 
         <div class="card-columns listrecent">
-            {% for word in interesting %}
+            {% for word in wordlist_interesting %}
             <!-- begin post -->
             <div class="card">
                 <div class="card-block">
-                    <h2 class="card-title"><a href="/lexeme/{{ word[1] }}">{{word[0]}}</a></h2>
-                    <h4 class="card-text">{{ word[2] }}</h4>
+                    <h2 class="card-title"><a href="/lexeme/{{ word.lexeme }}">{{ word.dictionary_form }}</a></h2>
+                    <h4 class="card-text">{{ word.meaning }}</h4>
                 </div>
             </div>
             <!-- end post -->

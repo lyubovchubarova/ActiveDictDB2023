@@ -11,152 +11,208 @@
             степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач.
         </p>
     </div>
+
     <!-- End Site Title
     ================================================== -->
 
     <!-- Begin List Posts
     ================================================== -->
 <div class="container-md">
+
     <form method="get" action="/process">
         <div class="search_form" style="margin-bottom: 5rem; margin-right: 2rem; margin-left: 1.2rem">
+
+            <!-- Поиск по заголовку -->
+
+            <!-- Разделитель -->
+
+
+            <!-- Расширенный поиск -->
             <div class="card-body">
-                <div id="word_1" class="card mt-2" style="padding: 2rem;">
-                    <!-- Поиск по заголовку -->
-                    <div class="form-group row">
-                        <div class="col-9">
+            <div class="input-group input-group-lg">
+                                <input id="articleheader" name="articleheader" type="text" class="form-control" placeholder="Введите заголовок статьи">
+                                <button class="btn btn-secondary" type="submit" style="border-radius: 0%; border-right-color: transparent; border-left-color: transparent">Искать</button>
+                                <button class="btn btn-secondary" type="reset" style="border-radius: 0rem 0.25rem 0.25rem 0rem">Очистить</button>
+             </div>
+            <hr style="margin-bottom: 0rem">
+                    <div class="row justify-content-around">
+                    <!-- Первая колонка -->
+                        <div class="col-sm-6">
+                        <div class="row">
+                            <label for="articlecontent" class="lead"><b>Поиск по тексту статьи</b></label>
+                            <input id="articlecontent" name="articlecontent" type="text" class="form-control" style="margin-bottom: 1.2rem; height: auto">
+                        </div>
 
-                            <label for="articleheader" class="lead"><b>Заголовок статьи</b></label>
-                            <input id="articleheader" name="articleheader" type="text" class="form-control">
-
+                        <div class="row">
+                            <label class="lead"><b>Автор</b></label>
+                                <select id="Authors" data-placeholder=" " multiple class="form-control form-control-sm chosen-select" name="Authors">
+                                    <option value=""></option>
+                                    {% for author in authors %}
+                                        <option value="{author}">
+                                            <p class="lead">
+                                                {{ author }}
+                                            </p>
+                                        </option>
+                                    {% endfor %}
+                            </select>
                         </div>
                     </div>
-        <!-- Доп поиск: слово в статье -->
-                    <div class="form-group row">
+                        <!-- Вторая колонка -->
+                        <div class="col-sm-6" style="margin-right: -7rem">
+                        <label><p class="lead" style="margin-bottom: auto"><b>Часть речи</b></p></label>
+                        <div class="row">
 
-                        <div class="col-6">
-                            <label for="articlecontent" class="lead"><b>Поиск по тексту статьи</b></label>
-                            <input id="articlecontent" name="articlecontent" type="text" class="form-control">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label><p class="lead"><b>Часть речи</b></p></label>
-                                <div class="row">
                                     <div class="col-sm-4">
-                                <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_8" type="checkbox" class="custom-control-input" value="">
-                                        <label for="checkbox_8" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
-                                            существительное
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
 
-                                <div class="custom-controls-stacked">
+                                        <div class="custom-controls-stacked">
+                                        <div class="custom-control custom-checkbox">
+                                            <input name="pos" id="checkbox_8" type="checkbox" class="custom-control-input" value="">
+                                            <label for="checkbox_8" class="custom-control-label">
+                                                <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
+                                                    существительное
+                                                </p>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                        <div class="custom-controls-stacked">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_0" type="checkbox" class="custom-control-input" value="verb">
+                                        <input name="pos" id="checkbox_0" type="checkbox" class="custom-control-input" value="verb">
                                         <label for="checkbox_0" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                                 глагол
                                             </p>
                                         </label>
                                     </div>
                                 </div>
 
-                                <div class="custom-controls-stacked">
+                                        <div class="custom-controls-stacked">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_1" type="checkbox" class="custom-control-input" value="adj">
+                                        <input name="pos" id="checkbox_1" type="checkbox" class="custom-control-input" value="adj">
                                         <label for="checkbox_1" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                                 прилагательное
                                             </p>
                                         </label>
                                     </div>
                                 </div>
-                                </div>
 
-
-                                <div class="col-sm-4">
-                                <div class="custom-controls-stacked">
+                                        <div class="custom-controls-stacked">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_2" type="checkbox" class="custom-control-input" value="interj">
+                                        <input name="pos" id="checkbox_2" type="checkbox" class="custom-control-input" value="interj">
                                         <label for="checkbox_2" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                             междометие
                                             </p>
                                         </label>
                                     </div>
                                 </div>
 
-                                <div class="custom-controls-stacked">
+                                        <div class="custom-controls-stacked">
                                         <div class="custom-control custom-checkbox">
-                                            <input name="checkbox" id="checkbox_3" type="checkbox" class="custom-control-input" value="prep">
+                                            <input name="pos" id="checkbox_3" type="checkbox" class="custom-control-input" value="prep">
                                             <label for="checkbox_3" class="custom-control-label">
-                                                <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                                <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                                 предлог
                                                 </p>
                                             </label>
                                         </div>
                                 </div>
 
-                                <div class="custom-controls-stacked">
+
+                                    </div>
+
+                                        <div class="col-sm-4">
+
+                                        <div class="custom-controls-stacked">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_4" type="checkbox" class="custom-control-input" value="conj">
+                                        <input name="pos" id="checkbox_4" type="checkbox" class="custom-control-input" value="conj">
                                         <label for="checkbox_4" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                             союз
                                             </p>
                                         </label>
                                     </div>
                                 </div>
-                                </div>
-                                 <div class="col-sm-4">
-                                <div class="custom-controls-stacked">
+
+                                        <div class="custom-controls-stacked">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_5" type="checkbox" class="custom-control-input" value="part">
+                                        <input name="pos" id="checkbox_5" type="checkbox" class="custom-control-input" value="part">
                                         <label for="checkbox_5" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                             частица
                                             </p>
                                         </label>
                                     </div>
                                 </div>
 
-
-
-                                <div class="custom-controls-stacked">
+                                        <div class="custom-controls-stacked">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="checkbox" id="checkbox_6" type="checkbox" class="custom-control-input" value="num">
+                                        <input name="pos" id="checkbox_6" type="checkbox" class="custom-control-input" value="num">
                                         <label for="checkbox_6" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                             числительное
                                             </p>
                                         </label>
                                     </div>
                                 </div>
 
-                          <div class="custom-controls-stacked">
+                                        <div class="custom-controls-stacked">
                             <div class="custom-control custom-checkbox">
-                              <input name="checkbox" id="checkbox_7" type="checkbox" class="custom-control-input" value="adv">
+                              <input name="pos" id="checkbox_7" type="checkbox" class="custom-control-input" value="adv">
                               <label for="checkbox_7" class="custom-control-label">
-                                  <p class="lead" style="font-size: 1.1rem; line-height: 0.5;">
+                                  <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
                                   наречие
                                   </p>
                               </label>
                             </div>
                           </div>
+
+                                </div>
+
+                            </div>
+                        <label><p class="lead" style="margin-bottom: auto; margin-top: auto"><b>Статус</b></p></label>
+                        <div class="row">
+
+                        <div class="col-sm-5">
+                            <div class="custom-controls-stacked">
+                                <div class="custom-control custom-checkbox">
+                                    <input name="status" id="finished" type="checkbox" class="custom-control-input" value="finished">
+                                        <label for="finished" class="custom-control-label">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
+                                                завершена
+                                            </p>
+                                        </label>
+                                </div>
+                            </div>
+
+                            <div class="custom-controls-stacked">
+                                <div class="custom-control custom-checkbox">
+                                    <input name="status" id="not_finished" type="checkbox" class="custom-control-input" value="not_finished">
+                                        <label for="not_finished" class="custom-control-label">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
+                                                не завершена
+                                            </p>
+                                        </label>
+                                </div>
+                            </div>
+
+                            <div class="custom-controls-stacked">
+                                <div class="custom-control custom-checkbox">
+                                    <input name="status" id="unknown" type="checkbox" class="custom-control-input" value="unknown">
+                                        <label for="unknown" class="custom-control-label">
+                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
+                                                неизвестно
+                                            </p>
+                                        </label>
+                                </div>
+                            </div>
                         </div>
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-            <div class="mt-2" style="margin-left: 1.2rem">
-                <button class="btn btn-secondary-search btn-lg px-4" type="submit">Искать</button>
-                <button class="btn btn-secondary btn-lg px-4" type="reset">Очистить</button>
-            </div>
-        </div>
+             </div>
 </form>
 </div>
     <script>
