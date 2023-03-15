@@ -59,15 +59,15 @@
       // Possible word endings to test against for when preserveWords: true
       wordEnd: /(&(?:[^;]+;)?|[0-9a-zA-Z\u00C0-\u0100]+|[^\u0000-\u007F]+)$/,
 
-      // class names for summary element and detail element
+      // class names.txt for summary element and detail element
       summaryClass: 'summary',
       detailClass: 'details',
 
-      // class names for <span> around "read-more" link and "read-less" link
+      // class names.txt for <span> around "read-more" link and "read-less" link
       moreClass: 'read-more',
       lessClass: 'read-less',
 
-      // class names for <a> around "read-more" link and "read-less" link
+      // class names.txt for <a> around "read-more" link and "read-less" link
       moreLinkClass: 'more-link',
       lessLinkClass: 'less-link',
 

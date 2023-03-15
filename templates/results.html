@@ -19,10 +19,10 @@
             <br />
           <div class="card">
             <div class="card-header" style="color: black; text-decoration: underline;">
-                <a href="/lexeme/{{res[1]}}">{{res[0]}}</a>
+                <a href="/lexeme/{{res.lexeme}}">{{res.dictionary_form}}</a>
             </div>
             <div class="card-body">
-                <p class="card-text">{{res[5] | safe}} </p>
+                <p class="card-text">{{res.meaning | safe}} </p>
             </div>
           </div>
         </div>

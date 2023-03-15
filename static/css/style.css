@@ -578,6 +578,7 @@ ul.tags li a:hover {
 
 .simple-pagination li a,
 .simple-pagination li span {
+	font-family: sans-serif;
     color: #666;
     padding: 5px 10px;
     text-decoration: none;
@@ -597,6 +598,7 @@ ul.tags li a:hover {
 }
 
 #pagination-container{
+	font-family: sans-serif;
     margin-top: 2rem;
     border-radius: 15%;
     bottom: 0;
@@ -612,4 +614,8 @@ ul.tags li a:hover {
 .search-result{
     display: block;
     margin-bottom: 16px;
+}
+
+.dropdown {
+  border-color: red;
 }

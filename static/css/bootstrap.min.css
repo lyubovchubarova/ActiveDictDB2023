@@ -2777,16 +2777,40 @@ fieldset[disabled] a.btn {
     background-color: #f5f5f5;
     border-color: #ccc;
 }
-.btn-secondary-search:hover {
+
+.btn-secondary-letter {
     color: #292b2c;
-    background-color: #e6e6e6;
-    border-color: #adadad;
+    background-color: #fff;
+    border-color: transparent;
+}
+
+.btn-secondary-letter-special {
+    color: red;
+    background-color: #fff;
+    border-color: transparent;
 }
 
 .btn-secondary:hover {
     color: #292b2c;
     background-color: #e6e6e6;
     border-color: #adadad;
+}
+
+.btn-secondary-search:hover {
+    color: #292b2c;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.btn-secondary-letter:hover {
+    color: white;
+    background-color: red;
+    border-color: transparent;
+}
+.btn-secondary-letter-special:hover {
+    color: white;
+    background-color: red;
+    border-color: transparent;
 }
 .btn-secondary.focus,
 .btn-secondary:focus {
@@ -3118,6 +3142,14 @@ fieldset[disabled] a.btn {
 .btn-link:disabled:hover {
     text-decoration: none;
 }
+.btn-group.special {
+  display: flex;
+}
+
+.special .btn {
+  flex: 1
+}
+
 .btn-group-lg > .btn,
 .btn-lg {
     padding: 0.75rem 1.5rem;
@@ -3212,6 +3244,7 @@ tbody.collapse.show {
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
+    overflow: scroll;
 }
 .dropdown-divider {
     height: 1px;
@@ -4568,6 +4601,22 @@ tbody.collapse.show {
         border-radius: 0;
     }
 }
+@media (min-width: 576px) {
+    .card-columns-dictionary {
+        -webkit-column-count: 5;
+        -moz-column-count: 5;
+        column-count: 5;
+        -webkit-column-gap: 1rem;
+        -moz-column-gap: 1rem;
+        column-gap: 1rem;
+    }
+    .card-columns-dictionary .card {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+}
+
 @media (min-width: 576px) {
     .card-columns {
         -webkit-column-count: 3;
@@ -8807,4 +8856,12 @@ a.text-gray-dark:hover {
     .hidden-print {
         display: none !important;
     }
+
+
 } /*# sourceMappingURL=bootstrap.min.css.map */
+
+.first-level-dropdown-toggle::after {
+  position: absolute;
+  left: 94%;
+  margin-top: 0.7em;
+}
