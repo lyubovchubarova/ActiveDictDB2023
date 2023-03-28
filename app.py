@@ -5,7 +5,7 @@ import re
 
 ALPHABET = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ'
 
-con = sqlite3.connect("work_db.db", check_same_thread=False)
+con = sqlite3.connect("finalvol1.db", check_same_thread=False)
 cur = con.cursor()
 
 app = Flask(__name__, instance_relative_config=True)
