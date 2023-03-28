@@ -39,8 +39,9 @@ def hello():
     #   'dictionary_form': словарная форма капсом с ударением,
     #    'meaning': значение
     # }
-    wordlist_interesting = []
-
+    
+    
+    #Общая статистика
     sql_query = 'SELECT status.status, COUNT(article_meta.status_id) as cnt \
                    FROM article_meta, status\
                    WHERE article_meta.status_id=status.id\
@@ -67,11 +68,8 @@ def search():
     #нужен запрос , который на выходе дает список всех авторов из базы
     #с id или расшифровкой - опционально
     #authors -> List
-    # with open('names.txt', encoding='utf-8') as f:
-    #     authors = f.read().splitlines()
-    sql_query = 'SELECT author FROM author'
-    cur.execute(sql_query)
-    authors = [x[0] for x in cur.fetchall()]
+    with open('names.txt', encoding='utf-8') as f:
+        authors = f.read().splitlines()
     return render_template('new_search.html', authors=authors)
 
 #результаты
@@ -101,6 +99,28 @@ def process():
     #   'dictionary_form': словарная форма капсом с ударением,
     #    'meaning': значение
     # }
+
+    #   ПРЕДЫДУЩИЙ ЗАПРОС
+    # sql_query = 'SELECT lexeme, lexeme_lemmas, pos, tags, new_html, meaning\
+    #              FROM dictionary\
+    #              WHERE lexeme_lemmas LIKE ({0})'.format('"%'+header+'%"')
+    # if len(pos) != 0:
+    #     sql_query += 'AND pos IN ({0})'.format(', '.join('?' for _ in pos))
+    #     cur.execute(sql_query, pos)
+    # else:
+    #     cur.execute(sql_query)
+    #
+    # results = cur.fetchall()
+    # random_words = [list(x) for x in results]
+    # for word in random_words:
+    #     try:
+    #         word[0] = word[0].replace(' ', '')
+    #         m = re.search(r"‘(.*?)’", word[5]).group(1)
+    #         word[5] = m
+    #     except:
+    #         pass
+    
+    # Статистика по запросу
     lexemes = tuple([result['lexeme'] for result in results])
     sql_query = 'SELECT status, COUNT(*) as cnt \
                     FROM article_meta \
@@ -123,26 +143,6 @@ def process():
     cur.execute(sql_query)
     res_authors = cur.fetchall()
     authors = [list(x) for x in res_authors]
-
-    #   ПРЕДЫДУЩИЙ ЗАПРОС
-    # sql_query = 'SELECT lexeme, lexeme_lemmas, pos, tags, new_html, meaning\
-    #              FROM dictionary\
-    #              WHERE lexeme_lemmas LIKE ({0})'.format('"%'+header+'%"')
-    # if len(pos) != 0:
-    #     sql_query += 'AND pos IN ({0})'.format(', '.join('?' for _ in pos))
-    #     cur.execute(sql_query, pos)
-    # else:
-    #     cur.execute(sql_query)
-    #
-    # results = cur.fetchall()
-    # random_words = [list(x) for x in results]
-    # for word in random_words:
-    #     try:
-    #         word[0] = word[0].replace(' ', '')
-    #         m = re.search(r"‘(.*?)’", word[5]).group(1)
-    #         word[5] = m
-    #     except:
-    #         pass
 
     return render_template('results.html', results=results, statuses=statuses, authors=authors)
 
