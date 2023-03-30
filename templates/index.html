@@ -39,7 +39,31 @@
             </div>
             <!-- end post -->
             {%  endfor %}
-
+        </div>
+    <br>
+    <label for="pseudoBtn" class="btn btn-sm btn-secondary">Показать статистику</label>
+        <input type="checkbox" id="pseudoBtn">
+        <div class="text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="card-text"><b>По статусу: </b></label>
+                        <p class="card-text">
+                            {% for status in statuses %}
+                                {{ status[0] }}: {{ status[1] }} <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="card-text"><b>По авторам: </b></label>
+                        <p class="card-text">
+                            {% for author in authors %}
+                                {{ author[0] }}: {{ author[1] }} <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}
