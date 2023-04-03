@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "active-dictionary-db",
+  "private_key_id": "72b7b0756fc6dc5368787f26238ca58effa93c11",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDcRPWcJ6KAHF9Q\nMX+hUJ52EphPuwcTidzASPwwi0ZjxGkn/xJ2hL77S01Hkq9sHMkAVLPLuczo6gF6\nK7Yr9YGCZ1pcvSquif0LLsw/pVWUUYbwtFKNe8tztT0jsfFT0SYWnuCS3aHkiQnr\nRTU6/USfaK7QQ2j6tjj6LCvXJf69JMbLGMAWbJVw2PHrTxmsGEKffPTMHrhBPH79\nMMEJBuL2fX4CzzXFbPZ3SpPp4+QhHKHUhiTvu3QBu+9jIrPEgbwazAw3x2nBgrA6\nvMs6efvok1TM58/OgXR4LMZS9VI+/G2jUFD8oc1+s7DHX5rZtG28wxbbsmN2H8u3\nswg/x3QzAgMBAAECggEAPdC8fM5CtGFB/mdlwge18LzXMcjy+3C9GtlgrN7pKiZ8\nvFTBAbHPRwai8Wsg/940Knua2ZmS/+pr77VEsqF7bvVCTrRnvgPLl8/SUio8Ehuv\nGu4AHOSY/CfouJO/fh476i08KPs568Dpn7UUczGQiIwAQ0Inu/RXmR28T+zByKJ8\nM+1CkJAdndskleW4mphg/yHsJ2y1Zwd97yAJMp16eyXvP+4ovFr1ZCr7La7F/u/x\nVKhJmbcIinfBFNKdYd7KS/c3g5z0mFHifLtfCspTTSaeEmVsefE3tbX7u86sENOd\nslgC96Zm2c8k42lkFHZaSW5zTLZQf6yXAfE8CA08wQKBgQDzmP5LX9kNCLmwx1Cb\na166/aHiPhE2kvsfkXuYpcHtgnoJC43izIKLAHlbLjVYzkUuerni2M4IRH0L1SKp\npwtXXPz0z6eaCK5yi+JiN8+UsmBxDaQJqKcHvqI3CEChgvj6Dz1KnXithF660p5q\nORnqjd1FVcDPtbZfAJXWrPIXfQKBgQDne+jsyCH6dc7S4wsYzloM7aV3T3XjZXlQ\naEiyGB/rMzNOIil8P8vGAY7AzAYELFedJ8cpAd94aZ2ZxoQSvPkQTDVDzA6MgLp6\nuT0gqB3nDU480LLO9BxSkmCPRFNCKwlfrLcVvjyh7HDRLJD7NTnDqNGZBfoUK1na\nh5AjTXFpbwKBgQCJXB0QraR72A61Yz7N1NafBIQzSiJ0rp7SZzvVkKpw3mEoFo7U\nc9OsxACqbL0CLZYPJn8JLo3HVa9Za77XAW3AvpuZBDsS/ZA44S4vih8QTyFYvoNg\nOuyszk80Tv/60xrIDq3WFEPHPFwaZseTSE2X2JUMEtXdii6jFXZoji8ZFQKBgCvq\nLPEmspOCX/9QBV3qX9kOCJMO5w2BxbcEYa4vt3Z2WyhagMZKkAz7ZKqcyhNmmiR9\nVGIqMcv1NWnj6FBpu1JlMsGu55+uGDKKC9ezLSEVPB97dECgvPLJRDpJuwXVhky5\nRm6AjZ4mbeyw6LxPh6rfzwuZv6yt4Lj9eNHJsldPAoGBAMYYExpy2IpWNnOQYjOI\niULRDrCO5dwlFHbdw3WJtWdWxbdNW6tQ5STq3ijmA9qyc6d8BjgARBmsFwJ306jX\neaOW5Z7cTe5pInd86u2axyzWXK1cOSO7e0X/4SOE4kTDzberPYXnf4FbvUWyGwNh\nmVHiDSRVa/ZhG6AS5yhAOJS7\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account@active-dictionary-db.iam.gserviceaccount.com",
+  "client_id": "111697451508197402346",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account%40active-dictionary-db.iam.gserviceaccount.com"
+}

@@ -6,8 +6,8 @@ import re
 
 ALPHABET = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ'
 
-# con = sqlite3.connect("finalvol1.db", check_same_thread=False)  #DEPRECATED
-# cur = con.cursor()  #DEPRECATED
+con = sqlite3.connect("example.db", check_same_thread=False)
+cur = con.cursor()
 
 search = SearchEngine("example.db")
 
@@ -42,8 +42,28 @@ def hello():
     #   'dictionary_form': словарная форма капсом с ударением,
     #    'meaning': значение
     # }
+    
+    
+    #Общая статистика
+    sql_query = 'SELECT status.status, COUNT(article_meta.status_id) as cnt \
+                   FROM article_meta, status\
+                   WHERE article_meta.status_id=status.id\
+                   GROUP BY article_meta.status_id\
+                   ORDER BY cnt DESC'
+    cur.execute(sql_query)
+    res_statuses = cur.fetchall()
+    statuses = [list(x) for x in res_statuses]
 
-    return render_template('index.html', wordlist_interesting=wordlist_interesting)
+    sql_query = 'SELECT author.author, COUNT(article_meta.author_id) as cnt\
+                       FROM article_meta, author\
+                       WHERE article_meta.author_id=author.id\
+                       GROUP BY article_meta.author_id\
+                       ORDER BY cnt DESC'
+    cur.execute(sql_query)
+    res_authors = cur.fetchall()
+    authors = [list(x) for x in res_authors]
+
+    return render_template('index.html', wordlist_interesting=wordlist_interesting, statuses=statuses, authors=authors)
 
 #поиск
 @app.route('/search')
@@ -51,7 +71,7 @@ def search():
     #нужен запрос , который на выходе дает список всех авторов из базы
     #с id или расшифровкой - опционально
     #authors -> List
-    with open('names.txt.', encoding='utf-8') as f:
+    with open('names.txt', encoding='utf-8') as f:
         authors = f.read().splitlines()
     return render_template('new_search.html', authors=authors)
 
@@ -74,13 +94,36 @@ def process():
     # TODO: Статусы (пока есть) finished, not_finished, unknown
     status = request.args.get('status') # -> List[str]
 
+    # поиск
     header_results = search.search_query(header, content_search=False)
     content_results = search.search_query(content, content_search=True)
-
     results = header_results + content_results
+    
+    # Статистика по запросу
+    lexemes = tuple([result['lexeme'] for result in results])
+    sql_query = 'SELECT status, COUNT(*) as cnt \
+                    FROM article_meta \
+                        JOIN status ON article_meta.status_id=status.id \
+                        JOIN lexema ON article_meta.lexema_id=lexema.id \
+                    WHERE lexema IN {0} \
+                    GROUP BY article_meta.status_id \
+                    ORDER BY cnt DESC'.format(lexemes)
+    cur.execute(sql_query)
+    res_statuses = cur.fetchall()
+    statuses = [list(x) for x in res_statuses]
 
+    sql_query = 'SELECT author, COUNT(*) as cnt \
+                FROM article_meta \
+                    JOIN author ON article_meta.author_id=author.id \
+                    JOIN lexema ON article_meta.lexema_id=lexema.id \
+                WHERE lexema IN {0} \
+                GROUP BY article_meta.author_id \
+                ORDER BY cnt DESC'.format(lexemes)
+    cur.execute(sql_query)
+    res_authors = cur.fetchall()
+    authors = [list(x) for x in res_authors]
 
-    return render_template('results.html', results=results)
+    return render_template('results.html', results=results, statuses=statuses, authors=authors)
 
 #DEPRECATED?
 def get_words(letter):
@@ -100,7 +143,6 @@ def get_words(letter):
                             else []
                  }
                 for result in results]
-
     return results
 
 @app.route('/dictionary/<start_letter>')
