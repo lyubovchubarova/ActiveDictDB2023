@@ -38,7 +38,7 @@ class SearchEngine():
         """
         return self.cur.execute(sql_query).fetchall()
 
-    def search_query(self, query):
+    def search_query(self, query: str, content_search: bool=True):
         """
         поиск по всему:
             сначала запрос делится токены и лемматизируется -- с этим осуществляем поиск по названиям
@@ -53,11 +53,13 @@ class SearchEngine():
             lexema_search_result = self.search_lexema(query_word)
             search_result.extend(lexema_search_result)
 
-        fts_search_result = self.full_text_search(' '.join(query_words))
-        for fts_res in fts_search_result:
-            if fts_res in set(search_result):
-                continue
-            search_result.append(fts_res)
+        if content_search:
+            fts_search_result = self.full_text_search(' '.join(query_words))
+            for fts_res in fts_search_result:
+                if fts_res in set(search_result):
+                    continue
+                search_result.append(fts_res)
+
         search_result = [
             {
                 "lexeme": item[0],

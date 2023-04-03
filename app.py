@@ -1,12 +1,15 @@
 import sqlite3
 from flask import Flask, request, render_template, g, render_template_string, jsonify
 from pymorphy2 import MorphAnalyzer
+from search import SearchEngine
 import re
 
 ALPHABET = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ'
 
-con = sqlite3.connect("finalvol1.db", check_same_thread=False)
+con = sqlite3.connect("example.db", check_same_thread=False)
 cur = con.cursor()
+
+search = SearchEngine("example.db")
 
 app = Flask(__name__, instance_relative_config=True)
 morph = MorphAnalyzer()
@@ -75,50 +78,26 @@ def search():
 #результаты
 @app.route('/process', methods=['GET'])
 def process():
-    # заголовок статьи
+    # DONE: заголовок статьи
     header = request.args.get('articleheader') # str
 
-    # список частей речи из запроса
+    # TODO: список частей речи из запроса
     # возможные: noun, adv, adj, interj, verb, part, prep, conj, num
     pos = request.args.getlist('pos') # -> List[str]
 
-    #содержимое статьи
+    # DONE: содержимое статьи
     content = request.args.get('articlecontent') # -> str
 
-    #Имена авторов (или можно выдавать id, можно переделать
+    # TODO: Имена авторов (или можно выдавать id, можно переделать
     author_names = request.args.get('Authors') # -> List[str]
 
-    #Статусы (пока есть) finished, not_finished, unknown
+    # TODO: Статусы (пока есть) finished, not_finished, unknown
     status = request.args.get('status') # -> List[str]
 
-    ### нужен запрос, который по аргументам выше возвращает спиcок с результатами results
-
-    # results -> List[Dict], каждый словарь выглядит так
-    # {
-    #   'lexeme': само слово,
-    #   'dictionary_form': словарная форма капсом с ударением,
-    #    'meaning': значение
-    # }
-
-    #   ПРЕДЫДУЩИЙ ЗАПРОС
-    # sql_query = 'SELECT lexeme, lexeme_lemmas, pos, tags, new_html, meaning\
-    #              FROM dictionary\
-    #              WHERE lexeme_lemmas LIKE ({0})'.format('"%'+header+'%"')
-    # if len(pos) != 0:
-    #     sql_query += 'AND pos IN ({0})'.format(', '.join('?' for _ in pos))
-    #     cur.execute(sql_query, pos)
-    # else:
-    #     cur.execute(sql_query)
-    #
-    # results = cur.fetchall()
-    # random_words = [list(x) for x in results]
-    # for word in random_words:
-    #     try:
-    #         word[0] = word[0].replace(' ', '')
-    #         m = re.search(r"‘(.*?)’", word[5]).group(1)
-    #         word[5] = m
-    #     except:
-    #         pass
+    # поиск
+    header_results = search.search_query(header, content_search=False)
+    content_results = search.search_query(content, content_search=True)
+    results = header_results + content_results
     
     # Статистика по запросу
     lexemes = tuple([result['lexeme'] for result in results])
@@ -146,6 +125,7 @@ def process():
 
     return render_template('results.html', results=results, statuses=statuses, authors=authors)
 
+#DEPRECATED?
 def get_words(letter):
 
     sql_query = 'SELECT lexeme, lexeme_lemmas, pos, tags, new_html\
