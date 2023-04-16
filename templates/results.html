@@ -45,10 +45,10 @@
             <br />
           <div class="card">
             <div class="card-header" style="color: black; text-decoration: underline;">
-                <a href="/lexeme/{{res.lexeme}}">{{res.dictionary_form}}</a>
+                <a href="{{res.link}}">{{res.lexeme}}</a>
             </div>
             <div class="card-body">
-                <p class="card-text">{{res.meaning | safe}} </p>
+                <p class="card-text">Изменено: {{ res.author }}, {{ res.date }}</p>
             </div>
           </div>
         </div>

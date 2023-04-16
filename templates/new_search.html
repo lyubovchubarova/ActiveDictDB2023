@@ -40,7 +40,7 @@
                         <div class="col-sm-6">
                         <div class="row">
                             <label for="articlecontent" class="lead"><b>Поиск по тексту статьи</b></label>
-                            <input id="articlecontent" name="articlecontent" type="text" class="form-control" style="margin-bottom: 1.2rem; height: auto">
+                            <input id="articlecontent" name="articlecontent" type="text" class="form-control" style="margin-bottom: 1.2rem; height: auto" disabled>
                         </div>
 
                         <div class="row">
@@ -48,7 +48,7 @@
                                 <select id="Authors" data-placeholder=" " multiple class="form-control form-control-sm chosen-select" name="Authors">
                                     <option value=""></option>
                                     {% for author in authors %}
-                                        <option value="{author}">
+                                        <option value="{{ author }}">
                                             <p class="lead">
                                                 {{ author }}
                                             </p>
@@ -59,191 +59,29 @@
                     </div>
                         <!-- Вторая колонка -->
                         <div class="col-sm-6" style="margin-right: -7rem">
-                        <label><p class="lead" style="margin-bottom: auto"><b>Часть речи</b></p></label>
-                        <div class="row">
+                            <label><p class="lead" style="margin-bottom: auto; margin-top: auto"><b>Статус</b></p></label>
+                            <div class="row">
 
-                                    <div class="col-sm-4">
-
+                                <div class="col-sm-5">
+                                    {% for status in statuses %}
                                         <div class="custom-controls-stacked">
-                                        <div class="custom-control custom-checkbox">
-                                            <input name="pos" id="checkbox_8" type="checkbox" class="custom-control-input" value="">
-                                            <label for="checkbox_8" class="custom-control-label">
-                                                <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                    существительное
-                                                </p>
-                                            </label>
+                                            <div class="custom-control custom-checkbox">
+                                                <input name="status" id="{{ status }}" type="checkbox" class="custom-control-input" value="{{ status }}">
+                                                <label for="{{ status }}" class="custom-control-label">
+                                                    <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
+                                                        {{ status }}
+                                                    </p>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                        <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="pos" id="checkbox_0" type="checkbox" class="custom-control-input" value="verb">
-                                        <label for="checkbox_0" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                глагол
-                                            </p>
-                                        </label>
-                                    </div>
+                                    {% endfor %}
                                 </div>
 
-                                        <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="pos" id="checkbox_1" type="checkbox" class="custom-control-input" value="adj">
-                                        <label for="checkbox_1" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                прилагательное
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                        <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="pos" id="checkbox_2" type="checkbox" class="custom-control-input" value="interj">
-                                        <label for="checkbox_2" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                            междометие
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                        <div class="custom-controls-stacked">
-                                        <div class="custom-control custom-checkbox">
-                                            <input name="pos" id="checkbox_3" type="checkbox" class="custom-control-input" value="prep">
-                                            <label for="checkbox_3" class="custom-control-label">
-                                                <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                предлог
-                                                </p>
-                                            </label>
-                                        </div>
-                                </div>
-
-
-                                    </div>
-
-                                        <div class="col-sm-4">
-
-                                        <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="pos" id="checkbox_4" type="checkbox" class="custom-control-input" value="conj">
-                                        <label for="checkbox_4" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                            союз
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                        <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="pos" id="checkbox_5" type="checkbox" class="custom-control-input" value="part">
-                                        <label for="checkbox_5" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                            частица
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                        <div class="custom-controls-stacked">
-                                    <div class="custom-control custom-checkbox">
-                                        <input name="pos" id="checkbox_6" type="checkbox" class="custom-control-input" value="num">
-                                        <label for="checkbox_6" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                            числительное
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                        <div class="custom-controls-stacked">
-                            <div class="custom-control custom-checkbox">
-                              <input name="pos" id="checkbox_7" type="checkbox" class="custom-control-input" value="adv">
-                              <label for="checkbox_7" class="custom-control-label">
-                                  <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                  наречие
-                                  </p>
-                              </label>
-                            </div>
-                          </div>
-
-                                </div>
-
-                            </div>
-                        <label><p class="lead" style="margin-bottom: auto; margin-top: auto"><b>Статус</b></p></label>
-                        <div class="row">
-
-                        <div class="col-sm-5">
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-checkbox">
-                                    <input name="status" id="finished" type="checkbox" class="custom-control-input" value="finished">
-                                        <label for="finished" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                завершена
-                                            </p>
-                                        </label>
-                                </div>
-                            </div>
-
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-checkbox">
-                                    <input name="status" id="not_finished" type="checkbox" class="custom-control-input" value="not_finished">
-                                        <label for="not_finished" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                не завершена
-                                            </p>
-                                        </label>
-                                </div>
-                            </div>
-
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-checkbox">
-                                    <input name="status" id="unknown" type="checkbox" class="custom-control-input" value="unknown">
-                                        <label for="unknown" class="custom-control-label">
-                                            <p class="lead" style="font-size: 1.1rem; margin-bottom: 0rem; line-height: 1rem">
-                                                неизвестно
-                                            </p>
-                                        </label>
-                                </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
              </div>
 </form>
 </div>
-    <script>
-        $(document).on("click", "#add", function () {
-            var amount = $('.search_form').children().length;
-
-            var new_amount = amount + 1;
-            var cloned_div = $('#word_' + amount);
-            var $cloned = $(cloned_div).clone().attr('id', 'word_' + new_amount).insertAfter('#word_' + amount);
-
-            $cloned.find("[id]").each(function () {
-                var $child = $(this);
-                var oldID = $child.attr('id');
-                var newID = oldID.replace(/[0-9]+$/, new_amount);
-                $child.attr('id', newID);
-            });
-        });
-        $(document).on("click", "#remove", function () {
-            if ($(this).closest(".card").attr('id') !== 'word_1') {
-                $(this).closest('.card').remove();
-            }
-        });
-    </script>
-
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/chosen.jquery.min.js') }}"></script>
-
 {% endblock %}
