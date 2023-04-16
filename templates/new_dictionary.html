@@ -59,19 +59,13 @@
                     <div class="list-item">
                     <div class="card" style="margin-bottom: 0rem; margin-top: 1rem">
                         <div class="card-block" style="margin-bottom: 0rem">
-                            <b><a href="/lexeme/{{article.lexeme}}">
-                                {{article.dictionary_form}}
+                            <b><a href="{{article.link}}">
+                                {{article.lexeme}}
                             </a>
                                 <small>
-                                    {{article.pos}};
+                                    <br>Изменено: {{ article.author }}, {{ article.date }};
                                 </small>
                             </b>
-                       <!-- тэги -->
-                            <ul class="tags">
-					            {% for tag in article.tags %}
-                                    <li>{{ tag }}</li>
-                                {% endfor%}
-				            </ul>
                         </div>
                     </div>
                     </div>
